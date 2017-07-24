@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CommonHeader.h"
+#include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Purple_LeafCharacter.generated.h"
 

@@ -8,6 +8,12 @@ AItem::AItem()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
+	body = CreateDefaultSubobject<UBoxComponent>(TEXT("collider"));
+	RootComponent = body;
+	//body->bGenerateOverlapEvents = true;
+
+
 
 }
 
@@ -25,3 +31,23 @@ void AItem::Tick(float DeltaTime)
 
 }
 
+void AItem::PickUp()
+{
+	return;
+
+}
+
+void AItem::GetPlayer(AActor *player)
+{
+
+}
+
+void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+
+}
+
+void AItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+
+}
