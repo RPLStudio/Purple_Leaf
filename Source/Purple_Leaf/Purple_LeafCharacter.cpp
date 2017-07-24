@@ -79,8 +79,8 @@ APurple_LeafCharacter::APurple_LeafCharacter()
 	VR_MuzzleLocation->SetRelativeLocation(FVector(0.000004, 53.999992, 10.000000));
 	VR_MuzzleLocation->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));		// Counteract the rotation of the VR gun model.
 
-	// Uncomment the following line to turn motion controllers on by default:
-	//bUsingMotionControllers = true;
+																				// Uncomment the following line to turn motion controllers on by default:
+																				//bUsingMotionControllers = true;
 }
 
 void APurple_LeafCharacter::BeginPlay()
@@ -114,6 +114,10 @@ void APurple_LeafCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	PlayerInputComponent->BindAction("pickup", IE_Released, this, &APurple_LeafCharacter::BeginPickUp);
+	PlayerInputComponent->BindAction("pickup", IE_Released, this, &APurple_LeafCharacter::EndPickUp);
+	PlayerInputComponent->BindAction("inventory", IE_Released, this, &APurple_LeafCharacter::ShowInventory);
 
 	//InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &APurple_LeafCharacter::TouchStarted);
 	if (EnableTouchscreenMovement(PlayerInputComponent) == false)
@@ -294,4 +298,16 @@ bool APurple_LeafCharacter::EnableTouchscreenMovement(class UInputComponent* Pla
 		//PlayerInputComponent->BindTouch(EInputEvent::IE_Repeat, this, &APurple_LeafCharacter::TouchUpdate);
 	}
 	return bResult;
+}
+
+void APurple_LeafCharacter::BeginPickUp() {
+	IsPickingUp = true;
+}
+
+void APurple_LeafCharacter::EndPickUp() {
+	IsPickingUp = false;
+}
+
+void APurple_LeafCharacter::ShowInventory() {
+
 }
