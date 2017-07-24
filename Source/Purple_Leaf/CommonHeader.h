@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-
-
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Components/ShapeComponent.h"
+#include "Runtime/Engine/Classes/Components/BoxComponent.h"
 
 
 /**
