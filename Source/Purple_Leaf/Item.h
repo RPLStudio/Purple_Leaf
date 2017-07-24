@@ -23,6 +23,29 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		UShapeComponent *body;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		UStaticMeshComponent *mesh;
+
+	/*
+	APurple_LeafCharacter *player;
+
+	FString name = FString(TEXT("item name"));
+
+	void PickUp();
+
+	void GetPlayer(AActor *player);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		bool ItemInRange = false;
+
+	UFUNCTION()
+		void TriggerEnter(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void TriggerExit(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	*/
 };
