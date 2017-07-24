@@ -12,6 +12,8 @@ AItem::AItem()
 	body = CreateDefaultSubobject<UBoxComponent>(TEXT("collider"));
 	RootComponent = body;
 	body->bGenerateOverlapEvents = true;
+	body->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnOverlapBegin);
+	body->OnComponentEndOverlap.AddDynamic(this, &AItem::OnOverlapEnd);
 
 
 
