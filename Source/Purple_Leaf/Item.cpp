@@ -11,7 +11,7 @@ AItem::AItem()
 	
 	body = CreateDefaultSubobject<UBoxComponent>(TEXT("collider"));
 	RootComponent = body;
-	//body->bGenerateOverlapEvents = true;
+	body->bGenerateOverlapEvents = true;
 
 
 
