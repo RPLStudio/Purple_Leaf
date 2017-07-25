@@ -42,7 +42,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
 		TArray<FString> log;
 		
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
+		
 
 	bool IsInRange = false;
 

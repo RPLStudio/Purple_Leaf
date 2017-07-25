@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "GameFramework/Character.h"
 #include "PurpleLeafCharacter.generated.h"
 
@@ -72,11 +73,11 @@ public:
 
 	//variables
 	//体力
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		int Fatigue = 500;
 
 	//跑步状态
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		bool IsRunning = false;
 
 	//跑步开始
@@ -91,11 +92,10 @@ public:
 	bool IsPickingUp = false;
 
 	//物品栏
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 	TArray<int> inventory;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
-		TArray<FString> log;
+
 
 
 	//functions

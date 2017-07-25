@@ -8,6 +8,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/Character.h"
+
 
 //////////////////////////////////////////////////////////////////////////
 // APurpleLeafCharacter
@@ -160,11 +162,9 @@ void APurpleLeafCharacter::StopRun()
 
 void APurpleLeafCharacter::StartPickingUp() {
 	IsPickingUp = true;
-	log.Add(TEXT("startpickup"));
 }
 void APurpleLeafCharacter::EndPickingUp() {
 	IsPickingUp = false;
-	log.Add(TEXT("endpickup"));
 }
 
 
