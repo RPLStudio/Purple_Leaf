@@ -1,10 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Item.h"
-#include "PurpleLeafCharacter.h"
-#include "Runtime/Engine/Classes/Components/ShapeComponent.h"
-#include "Runtime/Engine/Classes/Components/BoxComponent.h"
-#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+
 
 // Sets default values
 AItem::AItem()
@@ -43,10 +40,27 @@ void AItem::Tick(float DeltaTime)
 
 void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	{
+		IsInRange = true;
+		try
+		{
+			//player = OtherActor;
+		}
+		catch (const std::exception&)
+		{
 
+		}
+		
+	}
+	
 }
 
 void AItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	IsInRange = false;
+}
+
+void AItem::GetPlayer(AActor *player) {
 
 }

@@ -3,6 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PurpleLeafCharacter.h"
+#include "Runtime/Engine/Classes/Components/ShapeComponent.h"
+#include "Runtime/Engine/Classes/Components/BoxComponent.h"
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "Item.generated.h"
 
@@ -29,9 +33,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		UShapeComponent *collider;
 
+	bool IsInRange = false;
+
+	APurpleLeafCharacter *player;
+
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	void GetPlayer(AActor *player);
+
 
 
 	
