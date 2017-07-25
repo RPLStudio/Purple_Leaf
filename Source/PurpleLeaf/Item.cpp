@@ -3,7 +3,7 @@
 #include "Item.h"
 #include "Runtime/Engine/Classes/Components/ShapeComponent.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
-
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 
 // Sets default values
 AItem::AItem()
@@ -16,13 +16,15 @@ AItem::AItem()
 	collider->bGenerateOverlapEvents = true;
 	collider->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnOverlapBegin);
 	collider->OnComponentEndOverlap.AddDynamic(this, &AItem::OnOverlapEnd);
-
+	collider->SetRelativeScale3D(*(new FVector(3,3,3)));
+	
+	
 
 
 	body = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
+	body->AttachToComponent(collider, FAttachmentTransformRules::KeepRelativeTransform);
 	
 	
-
 }
 
 // Called when the game starts or when spawned
