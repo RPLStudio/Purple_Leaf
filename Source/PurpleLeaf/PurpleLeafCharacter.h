@@ -91,6 +91,7 @@ public:
 	bool IsPickingUp = false;
 
 	//ŒÔ∆∑¿∏
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 	TArray<int> inventory;
 
 

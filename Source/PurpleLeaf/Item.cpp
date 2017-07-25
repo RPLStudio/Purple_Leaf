@@ -7,7 +7,7 @@
 AItem::AItem()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	
 	collider = CreateDefaultSubobject<UBoxComponent>("BoxCollider");
 	RootComponent = collider;
@@ -36,6 +36,14 @@ void AItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (player)
+	{
+		if (IsInRange && player->IsPickingUp)
+		{
+			PickUp();
+		}
+	}
+
 }
 
 void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -43,15 +51,7 @@ void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherAct
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		IsInRange = true;
-		try
-		{
-			//player = OtherActor;
-		}
-		catch (const std::exception&)
-		{
-
-		}
-		
+		player = Cast<APurpleLeafCharacter>(OtherActor);
 	}
 	
 }
@@ -61,6 +61,6 @@ void AItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor
 	IsInRange = false;
 }
 
-void AItem::GetPlayer(AActor *player) {
-
+void AItem::PickUp() {
+	player->inventory.Add(ID);
 }

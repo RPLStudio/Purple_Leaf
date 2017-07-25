@@ -33,6 +33,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		UShapeComponent *collider;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+	FString name = TEXT("name");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+	int ID = 0;
+
+
+
+
 	bool IsInRange = false;
 
 	APurpleLeafCharacter *player;
@@ -41,9 +50,8 @@ public:
 
 	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	void GetPlayer(AActor *player);
 
-
+	void PickUp();
 
 	
 };
