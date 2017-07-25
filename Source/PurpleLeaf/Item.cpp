@@ -16,14 +16,13 @@ AItem::AItem()
 	collider->bGenerateOverlapEvents = true;
 	collider->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnOverlapBegin);
 	collider->OnComponentEndOverlap.AddDynamic(this, &AItem::OnOverlapEnd);
-	collider->SetRelativeScale3D(*(new FVector(3,3,3)));
 	
 	
 
 
 	body = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
-	body->AttachToComponent(collider, FAttachmentTransformRules::KeepRelativeTransform);
-	
+	body->AttachToComponent(collider, *(new FAttachmentTransformRules(EAttachmentRule::KeepRelative,EAttachmentRule::KeepRelative,EAttachmentRule::KeepWorld,false)));
+
 	
 }
 
