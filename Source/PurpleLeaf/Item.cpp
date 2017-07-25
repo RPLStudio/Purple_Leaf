@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Item.h"
+#include "PurpleLeafCharacter.h"
 #include "Runtime/Engine/Classes/Components/ShapeComponent.h"
 #include "Runtime/Engine/Classes/Components/BoxComponent.h"
 #include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"

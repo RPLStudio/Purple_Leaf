@@ -67,6 +67,9 @@ void APurpleLeafCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &APurpleLeafCharacter::Run);
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &APurpleLeafCharacter::StopRun);
 
+	PlayerInputComponent->BindAction("PickUp", IE_Pressed, this, &APurpleLeafCharacter::StartPickingUp);
+	PlayerInputComponent->BindAction("PickUp", IE_Released, this, &APurpleLeafCharacter::EndPickingUp);
+	PlayerInputComponent->BindAction("Inventory", IE_Pressed, this, &APurpleLeafCharacter::ShowInventory);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
@@ -153,6 +156,18 @@ void APurpleLeafCharacter::StopRun()
 {
 	GetCharacterMovement()->MaxWalkSpeed = 600;
 	IsRunning = false;
+}
+
+void APurpleLeafCharacter::StartPickingUp() {
+	IsPickingUp = true;
+}
+void APurpleLeafCharacter::EndPickingUp() {
+	IsPickingUp = false;
+}
+
+
+void APurpleLeafCharacter::ShowInventory() {
+
 }
 
 void APurpleLeafCharacter::Tick(float dt)

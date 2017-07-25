@@ -81,6 +81,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void StopRun();
 
+	bool IsPickingUp = false;
+
 	void Tick(float dt) override;
+
+	void StartPickingUp();
+
+	void EndPickingUp();
+
+	void ShowInventory();
 };
 
