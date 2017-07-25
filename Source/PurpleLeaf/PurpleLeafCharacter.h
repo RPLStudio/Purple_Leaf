@@ -69,23 +69,38 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+
+	//variables
+	//体力
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		int Fatigue = 500;
 
+	//跑步状态
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		bool IsRunning = false;
 
+	//跑步开始
 	UFUNCTION(BlueprintCallable)
 		void Run();
 
+	//跑步结束
 	UFUNCTION(BlueprintCallable)
 		void StopRun();
 
+	//拾取状态
 	bool IsPickingUp = false;
+
+	//物品栏
+	TArray<int> inventory;
+
+
+	//functions
 
 	void Tick(float dt) override;
 
+	//开始拾取
 	void StartPickingUp();
+
 
 	void EndPickingUp();
 
