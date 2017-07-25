@@ -72,11 +72,11 @@ public:
 
 	//variables
 	//体力
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
 		int Fatigue = 500;
 
 	//跑步状态
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
 		bool IsRunning = false;
 
 	//跑步开始
@@ -91,8 +91,11 @@ public:
 	bool IsPickingUp = false;
 
 	//物品栏
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
 	TArray<int> inventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
+		TArray<FString> log;
 
 
 	//functions
@@ -100,11 +103,12 @@ public:
 	void Tick(float dt) override;
 
 	//开始拾取
+	UFUNCTION()
 	void StartPickingUp();
 
-
+	UFUNCTION()
 	void EndPickingUp();
-
+	UFUNCTION()
 	void ShowInventory();
 };
 

@@ -160,9 +160,11 @@ void APurpleLeafCharacter::StopRun()
 
 void APurpleLeafCharacter::StartPickingUp() {
 	IsPickingUp = true;
+	log.Add(TEXT("startpickup"));
 }
 void APurpleLeafCharacter::EndPickingUp() {
 	IsPickingUp = false;
+	log.Add(TEXT("endpickup"));
 }
 
 

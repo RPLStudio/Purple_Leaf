@@ -41,6 +41,7 @@ void AItem::Tick(float DeltaTime)
 		if (IsInRange && player->IsPickingUp)
 		{
 			PickUp();
+			Destroy();
 		}
 	}
 
@@ -52,6 +53,7 @@ void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherAct
 	{
 		IsInRange = true;
 		player = Cast<APurpleLeafCharacter>(OtherActor);
+		
 	}
 	
 }
