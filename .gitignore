@@ -11,3 +11,5 @@ Saved
 *.xcodeproj
 *.xcworkspace
 .vs/
+Binaries/
+Content/imports/
