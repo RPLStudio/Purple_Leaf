@@ -169,7 +169,7 @@ void APurpleLeafCharacter::EndPickingUp() {
 
 
 void APurpleLeafCharacter::ShowInventory() {
-
+	
 }
 
 void APurpleLeafCharacter::Tick(float dt)

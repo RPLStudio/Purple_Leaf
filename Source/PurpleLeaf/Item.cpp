@@ -15,8 +15,6 @@ AItem::AItem()
 	collider->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnOverlapBegin);
 	collider->OnComponentEndOverlap.AddDynamic(this, &AItem::OnOverlapEnd);
 	
-	
-
 
 	body = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	body->AttachToComponent(collider, *(new FAttachmentTransformRules(EAttachmentRule::KeepRelative,EAttachmentRule::KeepRelative,EAttachmentRule::KeepWorld,false)));
