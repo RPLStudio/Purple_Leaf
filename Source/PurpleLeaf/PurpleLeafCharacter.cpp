@@ -9,7 +9,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Character.h"
-
+#include "Runtime/Core/Public/Containers/UnrealString.h"
 
 //////////////////////////////////////////////////////////////////////////
 // APurpleLeafCharacter
@@ -17,7 +17,6 @@
 APurpleLeafCharacter::APurpleLeafCharacter()
 {
 	this->SetActorTickEnabled(true);
-
 	
 
 	// Set size for collision capsule
@@ -58,6 +57,10 @@ APurpleLeafCharacter::APurpleLeafCharacter()
 
 void APurpleLeafCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
+	
+
+
+
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
@@ -69,16 +72,17 @@ void APurpleLeafCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAction("Run", IE_Pressed, this, &APurpleLeafCharacter::Run);
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &APurpleLeafCharacter::StopRun);
 
+	PlayerInputComponent->BindAction("SwitchCamera", IE_Pressed, this, &APurpleLeafCharacter::SwitchView);
+
 	PlayerInputComponent->BindAction("PickUp", IE_Pressed, this, &APurpleLeafCharacter::StartPickingUp);
 	PlayerInputComponent->BindAction("PickUp", IE_Released, this, &APurpleLeafCharacter::EndPickingUp);
-	PlayerInputComponent->BindAction("Inventory", IE_Pressed, this, &APurpleLeafCharacter::ShowInventory);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("Turn", this, &APurpleLeafCharacter::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("TurnRate", this, &APurpleLeafCharacter::TurnAtRate);
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookUp", this, &APurpleLeafCharacter::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &APurpleLeafCharacter::LookUpAtRate);
 
 	// handle touch devices
@@ -161,15 +165,40 @@ void APurpleLeafCharacter::StopRun()
 }
 
 void APurpleLeafCharacter::StartPickingUp() {
+	
 	IsPickingUp = true;
+	inventory.Add(1);
+	log.Add(FString::FromInt(sizeof(inventory[1])));
+	ULib::Save();
 }
 void APurpleLeafCharacter::EndPickingUp() {
 	IsPickingUp = false;
 }
 
-
-void APurpleLeafCharacter::ShowInventory() {
+void APurpleLeafCharacter::SwitchView() {
+	if (FirstPersonMode)
+	{
+		CameraBoom->TargetArmLength = 300;
+		
+	}
+	else
+	{
+		CameraBoom->TargetArmLength = -20;
+		
+	}
+	FirstPersonMode = !FirstPersonMode;
 	
+}
+
+
+
+int APurpleLeafCharacter::GetItemInInventory(int index) {
+	return 0;
+}
+
+
+int APurpleLeafCharacter::SetItemInInventory(int index) {
+	return 0;
 }
 
 void APurpleLeafCharacter::Tick(float dt)
@@ -191,6 +220,10 @@ void APurpleLeafCharacter::Tick(float dt)
 		if (Fatigue<0)
 		{
 			GetCharacterMovement()->MaxWalkSpeed = 200;
+		}
+		else
+		{
+			Fatigue++;
 		}
 	}
 }

@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
 #include "GameFramework/Character.h"
+#include "Lib.h"
 #include "PurpleLeafCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -34,11 +34,13 @@ protected:
 
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
+	
+	
 
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);
 
-	/** Called for side to side input */
+	
 	void MoveRight(float Value);
 
 	/** 
@@ -70,7 +72,7 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-
+	USkeletalMeshComponent* PlayerMesh;
 	//variables
 	//体力
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
@@ -93,10 +95,13 @@ public:
 
 	//物品栏
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
-	TArray<int> inventory;
+		TArray<int> inventory;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		TArray<FString> log;
 
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		bool FirstPersonMode = false;
 
 	//functions
 
@@ -108,7 +113,16 @@ public:
 
 	UFUNCTION()
 	void EndPickingUp();
-	UFUNCTION()
-	void ShowInventory();
+
+
+	UFUNCTION(BlueprintCallable)
+		static int GetItemInInventory(int index);
+
+	UFUNCTION(BlueprintCallable)
+		static int SetItemInInventory(int index);
+
+	UFUNCTION(BlueprintCallable)
+		void SwitchView();
+
 };
 

@@ -37,13 +37,12 @@ public:
 	FString name = TEXT("name");
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
-	int ID = 0;
+		int ID = 0;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
-		TArray<FString> log;
-		
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "aproperty")
-		
+		FString description;
+
+
 
 	bool IsInRange = false;
 
