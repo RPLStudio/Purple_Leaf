@@ -8,4 +8,13 @@ void ULib::Save() {
 	
 }
 
+void ULib::Init() {
 
+}
+
+void UInventory::add(int obj) {
+
+}
+void UInventory::remove(int index) {
+
+}

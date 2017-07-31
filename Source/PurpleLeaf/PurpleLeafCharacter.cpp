@@ -167,9 +167,14 @@ void APurpleLeafCharacter::StopRun()
 void APurpleLeafCharacter::StartPickingUp() {
 	
 	IsPickingUp = true;
-	inventory.Add(1);
-	log.Add(FString::FromInt(sizeof(inventory[1])));
-	ULib::Save();
+	try
+	{
+		
+	}
+	catch (const std::exception&)
+	{
+
+	}
 }
 void APurpleLeafCharacter::EndPickingUp() {
 	IsPickingUp = false;
@@ -220,10 +225,8 @@ void APurpleLeafCharacter::Tick(float dt)
 		if (Fatigue<0)
 		{
 			GetCharacterMovement()->MaxWalkSpeed = 200;
+			
 		}
-		else
-		{
-			Fatigue++;
-		}
+		Fatigue++;
 	}
 }

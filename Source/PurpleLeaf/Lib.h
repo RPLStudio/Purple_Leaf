@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
+#include "list.h"
 #include "CoreMinimal.h"
 #include "save.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
@@ -17,9 +17,6 @@ USTRUCT(BlueprintType)
 struct PURPLELEAF_API FInventoryItems
 {
 	GENERATED_USTRUCT_BODY()
-
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
-		int ID;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		FString Name;
@@ -37,20 +34,42 @@ struct PURPLELEAF_API FInventoryItems
 		UTexture2D *Icon;
 };
 
-UCLASS()
-class PURPLELEAF_API ULib : public UObject
+class PURPLELEAF_API UInventory
 {
-	GENERATED_BODY()
+
+
+public:
+
+	static const int max = 1;
+
+	//static TList<FInventoryItems> InventoryItems;
+
+	//static TList<int> Inventory;
+
+	static int InventoryLength;
+
+	static void add(int obj);
+
+	static void remove(int index);
+};
+
+class PURPLELEAF_API ULib 
+{
+	
 	
 public:
-	Usave *savedata;
 
+	static UInventory Inventory();
 
-
-	static TArray<FInventoryItems> InventoryItemList;
 
 	UFUNCTION(BlueprintCallable)
 		static void Save();
 
+	UFUNCTION(BlueprintCallable)
+		static void Init();
+
+
 };
+
+
 
