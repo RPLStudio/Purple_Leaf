@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Character.h"
 #include "Runtime/Core/Public/Containers/UnrealString.h"
+#include "Saving.h"
 
 //////////////////////////////////////////////////////////////////////////
 // APurpleLeafCharacter
@@ -167,14 +168,6 @@ void APurpleLeafCharacter::StopRun()
 void APurpleLeafCharacter::StartPickingUp() {
 	
 	IsPickingUp = true;
-	try
-	{
-		
-	}
-	catch (const std::exception&)
-	{
-
-	}
 }
 void APurpleLeafCharacter::EndPickingUp() {
 	IsPickingUp = false;

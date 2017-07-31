@@ -53,12 +53,12 @@ void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherAct
 		player = Cast<APurpleLeafCharacter>(OtherActor);
 		
 	}
-	
 }
 
 void AItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	IsInRange = false;
+	player = nullptr;
 }
 
 void AItem::PickUp() {

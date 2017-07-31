@@ -12,6 +12,9 @@ class APurpleLeafCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+
+	
+
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
@@ -103,6 +106,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		bool FirstPersonMode = false;
 
+
 	//functions
 
 	void Tick(float dt) override;
@@ -123,6 +127,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		void SwitchView();
+
+
 
 };
 
