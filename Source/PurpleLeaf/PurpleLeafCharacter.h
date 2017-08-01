@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Lib.h"
+#include "Saving.h"
 #include "PurpleLeafCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -106,7 +107,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
 		bool FirstPersonMode = false;
 
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "property")
+		USaving *SaveData;
 	//functions
 
 	void Tick(float dt) override;
